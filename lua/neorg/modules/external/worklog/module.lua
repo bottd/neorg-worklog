@@ -10,8 +10,6 @@ local module = modules.create("external.worklog")
 
 module.public.config = {
   heading = "Worklog",
-  log_created = true,
-  log_modified = true
 }
 
 module.setup = function()
