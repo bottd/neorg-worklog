@@ -4,7 +4,6 @@ local modules, lib, log = neorg.modules, neorg.lib, neorg.log
 local treesitter ---@type core.integrations.treesitter
 local dirman ---@type core.dirman
 local journal ---@type core.journal
-local metagen ---@type core.esupports.metagen
 
 local module = modules.create("external.worklog")
 
@@ -19,7 +18,6 @@ module.setup = function()
       "core.dirman",
       "core.integrations.treesitter",
       "core.journal",
-      "core.esupports.metagen"
     },
   }
 end
@@ -28,7 +26,6 @@ module.load = function()
   dirman = module.required["core.dirman"]
   treesitter = module.required["core.integrations.treesitter"]
   journal = module.required["core.journal"]
-  metagen = module.required["core.esupports.metagen"]
 
   vim.api.nvim_create_autocmd("BufWritePost", {
     pattern = "*.norg",
