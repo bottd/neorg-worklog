@@ -49,3 +49,14 @@ Rocks.nvim 🗿
     }
 },
 ```
+
+## Known Issues
+
+- After saving a `.norg` file, cursor position is set back to top of the file
+- Notification of `/path/to/journal/today.norg` written in status line
+
+## Feature Ideas
+
+- Sort workspace headings
+- Sort file links
+- Separate files created and files modified
