@@ -7,7 +7,7 @@ local journal ---@type core.journal
 
 local module = modules.create("external.worklog")
 
-module.public.config = {
+module.config.public = {
   -- Title content for worklog in journal
   heading = "Worklog",
   -- Title content for "default" workspace
@@ -42,7 +42,7 @@ module.log_norg_file = function(event)
   local meta = treesitter.get_document_metadata()
 
   if workspace == "default" then
-    workspace = module.public.config.default_workspace_title
+    workspace = module.config.public.default_workspace_title
   end
 
   vim.api.nvim_command(":Neorg journal today")
@@ -64,7 +64,7 @@ module.log_norg_file = function(event)
   ]]
 
   treesitter.execute_query(
-    string.format(worklog_title_tmpl, module.public.config.heading),
+    string.format(worklog_title_tmpl, module.config.public.heading),
     function(query, id, node, metadata)
       worklog_title_line = treesitter.get_node_range(node).row_start
     end,
@@ -115,7 +115,7 @@ module.log_norg_file = function(event)
   end
 
   if worklog_title_line == nil then
-    table.insert(lines, 1, "* " .. module.public.config.heading)
+    table.insert(lines, 1, "* " .. module.config.public.heading)
   end
 
 
