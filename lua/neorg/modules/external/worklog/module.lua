@@ -8,8 +8,9 @@ local journal ---@type core.journal
 local module = modules.create("external.worklog")
 
 module.public.config = {
+  -- Title content for worklog in journal
   heading = "Worklog",
-  -- heading2 text used for files without a workspace
+  -- Title content for "default" workspace
   default_workspace_title = "default"
 }
 

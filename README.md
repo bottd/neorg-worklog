@@ -6,9 +6,9 @@ Log the files you worked on in your daily journal automatically. When a `.norg` 
 ```norg
 * Worklog
 ** workspace-name
-   - [metadata title]{:/Absolute/path/to/file.norg:}
+   - {:/Absolute/path/to/file.norg:}[metadata title]
 ** journal
-   - [2024-07-29]{:/journals/2024-07-29:}
+   - {:/journals/2024-07-29:}[2024-07-29]
 ```
 
 Worklog entries are separated by [dirman](https://github.com/nvim-neorg/neorg/wiki/Dirman) workspace name.
