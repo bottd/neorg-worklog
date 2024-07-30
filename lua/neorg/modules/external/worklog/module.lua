@@ -9,6 +9,8 @@ local module = modules.create("external.worklog")
 
 module.public.config = {
   heading = "Worklog",
+  -- heading2 text used for files without a workspace
+  default_workspace_title = "default"
 }
 
 module.setup = function()
@@ -37,6 +39,10 @@ module.log_norg_file = function(event)
   dirman.set_closest_workspace_match()
   local workspace = dirman.get_workspace_match()
   local meta = treesitter.get_document_metadata()
+
+  if workspace == "default" then
+    workspace = module.public.config.default_workspace_title
+  end
 
   vim.api.nvim_command(":Neorg journal today")
 

@@ -43,7 +43,9 @@ Rocks.nvim 🗿
     -- default config
     config = {
         -- Title content for worklog in journal
-        heading = "Worklog"
+        heading = "Worklog",
+        -- Title content for "default" workspace
+        default_workspace_title = "default"
     }
 },
 ```
