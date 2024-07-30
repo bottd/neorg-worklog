@@ -101,9 +101,7 @@ module.log_norg_file = function(event)
     end
   end
 
-
-
-  local lines = {"   - [" .. (meta.title or event.file) .. "]{:" .. event.file .. ":}"}
+  local lines = {"   - {:" .. event.file .. ":}[" .. (meta.title or event.file) .. "]"}
 
   if workspace_title_line == nil then
     table.insert(lines, 1, "** " .. workspace)
