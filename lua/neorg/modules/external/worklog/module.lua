@@ -40,6 +40,7 @@ module.log_norg_file = function(event)
   dirman.set_closest_workspace_match()
   local workspace = dirman.get_workspace_match()
   local meta = treesitter.get_document_metadata()
+  local winview = vim.fn.winsaveview()
 
   if workspace == "default" then
     workspace = module.config.public.default_workspace_title
@@ -104,6 +105,8 @@ module.log_norg_file = function(event)
 
     if file_in_worklog then
       -- early return, no insert needed
+      vim.api.nvim_buf_delete(bufnr, {})
+      vim.fn.winrestview(winview)
       return
     end
   end
@@ -129,7 +132,8 @@ module.log_norg_file = function(event)
   end
 
   vim.cmd('silent! write')
+  vim.api.nvim_buf_delete(bufnr, {})
+  vim.fn.winrestview(winview)
 end
 
 return module
-

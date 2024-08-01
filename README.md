@@ -52,8 +52,7 @@ Rocks.nvim 🗿
 
 ## Known Issues
 
-- After saving a `.norg` file, cursor position is set back to top of the file
-- Notification of `/path/to/journal/today.norg` written in status line
+- Notification of today's journal being written in status line
 
 ## Feature Ideas
 
