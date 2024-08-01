@@ -47,15 +47,21 @@ module.log_norg_file = function(event)
   local buf = vim.api.nvim_create_buf(false, true)
   local win = vim.api.nvim_open_win(buf, false, {
     relative = "editor",
-    width = 1,
-    height = 1,
-    row = 0,
-    col = 0,
+    width = 10,
+    height = 10,
+    row = 1,
+    col = 1,
     hide = true
   })
 
+
   vim.api.nvim_win_call(win, function()
-    vim.api.nvim_command(":Neorg journal today")
+    local ok = pcall(vim.api.nvim_command, ":Neorg journal today")
+
+    if not ok then
+      return
+    end
+
     local bufnr = vim.api.nvim_get_current_buf()
     local journal_path = vim.api.nvim_buf_get_name(bufnr)
 
