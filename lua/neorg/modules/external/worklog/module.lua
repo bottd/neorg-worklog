@@ -41,8 +41,8 @@ module.get_workspace_relative_path = function(path, workspace)
 		return path
 	end
 
-	local workspace_path = dirman.get_workspace(workspace_name)
-	return path:gsub("^" .. workspace_path, "$" .. workspace_name)
+	local workspace_path = dirman.get_workspace(workspace)
+	return path:gsub("^" .. workspace_path, "$" .. workspace)
 end
 
 module.log_norg_file = function(event)
