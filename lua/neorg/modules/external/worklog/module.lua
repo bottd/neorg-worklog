@@ -112,12 +112,12 @@ module.log_norg_file = function(event)
 		if workspace_title_line ~= nil then
 			local file_in_worklog = false
 			-- Escape special characters in file name for search
-			local escaped_file = event.file:gsub("([^%w])", "%%%1")
+			local escaped_path = file_path:gsub("([^%w])", "%%%1")
 			treesitter.execute_query(
 				"(unordered_list1 content: (paragraph) @content)",
 				function(query, id, node, metadata)
 					local text = treesitter.get_node_text(node)
-					if string.match(text, file_path) then
+					if string.match(text, escaped_path) then
 						file_in_worklog = true
 						return true
 					end
