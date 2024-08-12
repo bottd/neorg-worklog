@@ -106,6 +106,8 @@ module.log_norg_file = function(event)
 			)
 		end
 
+		local file_path = module.get_workspace_relative_path(event.file, workspace)
+
 		-- Check if file already in worklog before insert lines
 		if workspace_title_line ~= nil then
 			local file_in_worklog = false
@@ -115,7 +117,7 @@ module.log_norg_file = function(event)
 				"(unordered_list1 content: (paragraph) @content)",
 				function(query, id, node, metadata)
 					local text = treesitter.get_node_text(node)
-					if string.match(text, escaped_file) then
+					if string.match(text, file_path) then
 						file_in_worklog = true
 						return true
 					end
@@ -131,11 +133,7 @@ module.log_norg_file = function(event)
 		end
 
 		local lines = {
-			"   - {:"
-				.. module.get_workspace_relative_path(event.file, workspace)
-				.. ":}["
-				.. (meta.title or event.file)
-				.. "]",
+			"   - {:" .. file_path .. ":}[" .. (meta.title or event.file) .. "]",
 		}
 
 		if workspace_title_line == nil then
