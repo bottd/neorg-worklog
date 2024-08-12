@@ -127,7 +127,6 @@ module.log_norg_file = function(event)
 
 			if file_in_worklog then
 				-- Early return, no insert needed
-				vim.api.nvim_buf_delete(bufnr, {})
 				return
 			end
 		end
@@ -154,8 +153,10 @@ module.log_norg_file = function(event)
 		end
 
 		vim.cmd("silent! write")
-		vim.api.nvim_buf_delete(bufnr, {})
 	end)
+
+	vim.api.nvim_win_close(win, false)
+	vim.api.nvim_buf_delete(buf, {})
 end
 
 return module
