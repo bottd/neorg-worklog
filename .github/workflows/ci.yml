@@ -1,0 +1,38 @@
+name: CI
+
+on:
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        neovim: [stable, nightly]
+    
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Install Nix
+        uses: cachix/install-nix-action@v27
+        with:
+          github_access_token: ${{ secrets.GITHUB_TOKEN }}
+          
+      - name: Setup Nix dev environment 
+        uses: nicknovitski/nix-develop@v1
+
+      - name: Check flake
+        run: nix flake check
+ 
+      - name: Run formatting check
+        run: nix fmt -- --check .
+     
+      - name: Install dependencies
+        run: lx install
+      
+      - name: Run linter
+        run: lx lint
+      
+      - name: Run tests
+        run: lx test

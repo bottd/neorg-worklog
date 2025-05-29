@@ -22,12 +22,12 @@
           projectRootFile = "flake.nix";
           programs = {
             nixpkgs-fmt.enable = true;
-            stylua = {
-              enable = true;
-              settings = {
-                indent_type = "Spaces";
-                indent_width = 2;
-              };
+          };
+          settings = {
+            lux = {
+              command = "lx fmt";
+              includes = [ "*.lua" ];
+
             };
           };
         };
