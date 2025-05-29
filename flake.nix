@@ -17,7 +17,7 @@
       let
         overlays = [ neovim-nightly-overlay.overlays.default ];
         pkgs = import nixpkgs { inherit system overlays; };
-        
+
         treefmtEval = treefmt-nix.lib.evalModule pkgs {
           projectRootFile = "flake.nix";
           programs = {
@@ -25,7 +25,7 @@
             stylua = {
               enable = true;
               settings = {
-                indent_type = "spaces";
+                indent_type = "Spaces";
                 indent_width = 2;
               };
             };
@@ -39,7 +39,6 @@
               enable = true;
               package = treefmtEval.config.build.wrapper;
             };
-            luacheck.enable = true;
           };
         };
       in
@@ -63,10 +62,8 @@
             neovim
             # Uncomment for nightly:
             # neovim-nightly
-            
-            lua-language-server
-            stylua
-            luacheck
+
+            lux
             treefmtEval.config.build.wrapper
           ];
         };

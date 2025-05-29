@@ -1,0 +1,30 @@
+# Lua
+luacov.stats.out
+luacov.report.out
+
+# Rocks
+.luarocks/
+.lux
+.rocks/
+
+# Test coverage
+coverage/
+*.coverage
+
+# Editor
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Nix
+result
+result-*
+.direnv
+.pre-commit-config.yaml
+
+# OS
+.DS_Store
+Thumbs.db
+

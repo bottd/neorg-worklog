@@ -1,0 +1,20 @@
+package = "neorg-worklog"
+version = "1.0.0"
+lua = ">=5.1"
+
+[description]
+summary = "Automatically log file changes to your Neorg journal with improved performance and reliability."
+maintainer = "Drake Bott"
+labels = ["neorg"]
+license = "MIT"
+
+[dependencies]
+# Add your dependencies here
+
+[dev-dependencies]
+busted = ">=2.0"
+luacheck = ">=1.2"
+
+[build]
+type = "builtin"
+
